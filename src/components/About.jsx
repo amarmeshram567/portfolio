@@ -51,12 +51,12 @@ const AboutSection = () => {
 
                 {/* Content */}
                 <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
-                    {/* Visual */}
+                    {/* Visual desktop  */}
                     <motion.div
                         initial={{ opacity: 0, x: -50 }}
                         animate={isInView ? { opacity: 1, x: 0 } : {}}
                         transition={{ duration: 0.8, delay: 0.2 }}
-                        className="relative"
+                        className="relative hidden md:block"
                     >
                         <div className="relative w-full aspect-square max-w-md mx-auto">
                             <motion.div
@@ -129,6 +129,89 @@ const AboutSection = () => {
 
                         </div>
                     </motion.div>
+
+                    {/* Visual mobile */}
+                    <motion.div
+                        initial={{ opacity: 0, x: -50 }}
+                        animate={isInView ? { opacity: 1, x: 0 } : {}}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                        className="relative block sm:hidden"
+                    >
+                        <div className="relative w-full aspect-square max-w-xs mx-auto">
+
+                            {/* BACK CARD */}
+                            <motion.div
+                                className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20"
+                                animate={{ rotate: [0, 5, 0] }}
+                                transition={{ duration: 6, repeat: Infinity }}
+                            />
+
+                            {/* INNER CARD */}
+                            <motion.div
+                                className="absolute inset-3 rounded-xl bg-secondary"
+                                animate={{ rotate: [0, -3, 0] }}
+                                transition={{ duration: 5, repeat: Infinity }}
+                            />
+
+                            <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-primary/30 to-accent/30 flex items-center justify-center overflow-visible">
+
+                                <div className="relative w-56 h-56 flex items-center justify-center">
+
+                                    {/* SOFT GLOW */}
+                                    <motion.div
+                                        className="absolute inset-[-10px] rounded-full blur-xl opacity-60"
+                                        style={{
+                                            background:
+                                                "conic-gradient(from 180deg, #6366f1, #ec4899, #6366f1)",
+                                        }}
+                                        animate={{ opacity: [0.4, 0.7, 0.4], scale: [1, 1.05, 1] }}
+                                        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                                    />
+
+                                    {/* ORBIT DOTS */}
+                                    {[
+                                        { size: "w-1.5 h-1.5", color: "#6366f1", duration: 6, offset: 120 },
+                                        { size: "w-2 h-2", color: "#ec4899", duration: 8, offset: 135 },
+                                        { size: "w-1 h-1", color: "#22d3ee", duration: 5, offset: 110 },
+                                    ].map((dot, i) => (
+                                        <motion.div
+                                            key={i}
+                                            className={`absolute rounded-full ${dot.size}`}
+                                            animate={{ rotate: 360 }}
+                                            transition={{ duration: dot.duration, repeat: Infinity, ease: "linear" }}
+                                            style={{
+                                                top: "-4px",
+                                                left: "50%",
+                                                transformOrigin: `0 ${dot.offset}px`,
+                                                background: dot.color,
+                                                boxShadow: `0 0 8px ${dot.color}`,
+                                            }}
+                                        />
+                                    ))}
+
+                                    {/* PROFILE IMAGE */}
+                                    <motion.img
+                                        src="/profile.jpg"
+                                        alt="Amar Meshram"
+                                        className="
+                                            relative z-10
+                                            w-full h-full object-cover rounded-full
+                                            border-2 border-transparent
+                                            bg-gradient-to-br from-indigo-400 via-pink-400 to-cyan-400
+                                            p-[3px]
+                                            shadow-xl
+                                        "
+                                        animate={{ scale: [1, 1.04, 1] }}
+                                        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                                    />
+
+                                </div>
+                            </div>
+                        </div>
+                    </motion.div>
+
+
+
 
                     {/* Text */}
                     <motion.div
