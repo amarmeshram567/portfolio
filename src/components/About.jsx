@@ -211,8 +211,6 @@ const AboutSection = () => {
                     </motion.div>
 
 
-
-
                     {/* Text */}
                     <motion.div
                         initial={{ opacity: 0, x: 50 }}
